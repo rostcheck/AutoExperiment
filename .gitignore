@@ -1,0 +1,6 @@
+*.csv
+auto
+venv
+*.xlsx
+.DS_Store
+.idea

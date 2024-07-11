@@ -1,0 +1,12 @@
+{
+  "experiment_script": "source ../SimulateAggregateIntelligence/venv/bin/activate; python ../SimulateAggregateIntelligence/SimulateAggregateIntelligence.py",
+  "$vary:num_nodes": [1, 2, 5, 10, 30, 100],
+  "tune_parameter": "task_generation_rate",
+  "range_min": "0.1",
+  "range_max": "4",
+  "max_iter": 15,
+  "expected_result_subdir": "output",
+  "expected_result_file": "output-stats.csv",
+  "target_output_row": "tasks_completed",
+  "target_output_column": "average"
+}
