@@ -3,7 +3,6 @@ import json
 import argparse
 import os
 import logging
-# import random
 import shutil
 import pandas
 from scipy.optimize import minimize_scalar
@@ -102,15 +101,10 @@ run_vary_param = long_vary_param[0].replace('$vary:', "")
 logging.info(f"Varying parameter {run_vary_param} over list {vary_list}")
 
 # Find the tuning parameter
-# tuner = [key for key, value in config.items() if '$tune' in value]
-# tune_param = tuner[0]
 tune_param = config['tune_parameter']
 range_max = float(config['range_max'])
 range_min = float(config['range_min'])
 max_iter = int(config['max_iter'])
-# long_tune_value = config[tune_param]
-# starting_tune_value = float(long_tune_value.replace('$tune:', ""))
-# logging.info(f"Tuning parameter {tune_param} starting with {starting_tune_value}")
 template_config = read_config('experiment_template.json')
 target_output_row = config['target_output_row']
 target_output_column = config['target_output_column']
@@ -119,7 +113,6 @@ target_output_column = config['target_output_column']
 for this_vary_param in vary_list:
     # minimize the function
     result = minimize_scalar(objective, method='bounded', bounds=[range_min, range_max], options={'maxiter': max_iter})
-    # result = minimize_scalar(objective, method='brent', bracket=(0.1, 4))
     # summarize the result
     best_tune_value, best_result = result['x'], result['fun']
     logging.info(f"Best result for {run_vary_param} using {best_tune_value} was: {best_result}")
